@@ -24,8 +24,17 @@ export const AppReducer = (state, action) => {
                 return {
                     ...state,
                 };
+                
             } else {
-                alert("Cannot increase the allocation! Out of funds");
+                let remaining = 0;
+
+                if (state.expenses) {
+                    const totalExpenses = state.expenses.reduce((total, item) => {
+                    return (total = total + item.cost);
+                }, 0);
+                remaining = state.budget - totalExpenses;
+                alert(`The Value cannot exceed remaining funds ${state.currency} ${remaining}`);
+            }
                 return {
                     ...state
                 }
@@ -39,6 +48,10 @@ export const AppReducer = (state, action) => {
                     return currentExp
                 })
                 action.type = "DONE";
+                if(0 >= state.budget) {
+                    alert(`You cannot reduce the budget value lower than the spending`);
+                }
+                
                 return {
                     ...state,
                     expenses: [...red_expenses],
@@ -60,7 +73,15 @@ export const AppReducer = (state, action) => {
         case 'SET_BUDGET':
             action.type = "DONE";
             state.budget = action.payload;
-
+            let remaining = 0;
+            if (state.expenses) {
+                const totalExpenses = state.expenses.reduce((total, item) => {
+                return (total = total + item.cost);
+            }, 0);
+            remaining = state.budget - totalExpenses;
+            if(remaining < 0) {
+                                alert(`You cannot reduce the budget value lower than the spending`);
+            }}
             return {
                 ...state,
             };
