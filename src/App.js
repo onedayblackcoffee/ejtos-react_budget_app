@@ -1,14 +1,16 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppProvider } from './context/AppContext';
+// import AllocationForm from './components/AllocationForm';
 import Budget from './components/Budget';
-import CartValue from './components/CartValue';
+// import CartValue from './components/CartValue';
 import ExpenseList from './components/ExpenseList';
 import ExpenseItem from './components/ExpenseItem';
-import ExpenseTotal from './components/ExpenseTotal';
-import ItemSelected from './components/ItemSelected';
+// import ExpenseTotal from './components/ExpenseTotal';
+// import ItemSelected from './components/ItemSelected';
 import Location from './components/Location';
 import Remaining from './components/Remaining';
+import Spentsofar from './components/Spentsofar'
 
 //Code to import Budget.js
 
@@ -20,20 +22,40 @@ const App = () => {
         <AppProvider>
             <div className='container'>
                 <h1 className='mt-3'>Company's Budget Allocation</h1>
-                    <div className='row mt-3'>
-                        {/* Add Budget component here under */}        
+                <div className='row mt-3'> 
+                    <div className='col-sm'>
                         <Budget />
-                        {/* Add Remaining component here under */}        
-                        <Remaining/ >
-                        {/* Add ExpenseTotal component here under */}        
-                        <ExpenseTotal />
-                        {/* Add ExpenseList component here under */}         
-                        <ExpenseList />
-                        {/* Add ExpenseItem component here under */}        
-                        <ExpenseItem />
-                        {/* Add AllocationForm component here under */}        
-                        <AllocationFrom />
+                    </div>
+                    <div className='col-sm'>
+                        <Remaining />
+                    </div>
+                    <div className='col-sm'>
+                        <Spentsofar />
+                    </div>
+                    <div className='col-sm'>
+                        <Location />
+                    </div>
                 </div>
+                    
+                    
+                   
+                        {/* <ExpenseTotal />
+                  
+                  
+                        <AllocationForm /> */}
+
+                <h3 className='mt-3'>Shopping Cart</h3>
+                    <div className='row '>
+                        <div className='col-sm'>
+                            <ExpenseList />
+                        </div>
+                    </div>
+                <h3 className='mt-3'>Add Items</h3>
+                    <div className='row mt-3'>
+                        <div className='col-sm'>
+                            
+                        </div>
+                    </div>
             </div>
         </AppProvider>
     );
