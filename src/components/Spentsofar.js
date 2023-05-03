@@ -4,7 +4,8 @@ import { AppContext } from '../context/AppContext';
 const Spentsofar = () => {
     const { expenses, currency} = useContext(AppContext);
     const totalExpenses = expenses.reduce((total, item) => {
-        return (total += (item.unitprice * item.quantity));
+        return (total += (item.cost));
+        // return (total += (item.unitprice * item.quantity));
     }, 0);
     return (
         <div className='alert alert-primary'>
